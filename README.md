@@ -1,2 +1,2 @@
-# G20_G2ProyectoRentCubiculo
+# Grupo G2 ProyectoRentCubiculo
  Proyecto Modulo 3
