@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Biblioteca</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    
+    <!-- Barra navegación  -->
+    <div class="container-fluid" id="contenedor">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="#">MENÚ BIBLIOTECA</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarNav">
+                      </div>
+                    </div>
+                  </nav>
+            </div>    
+        </div>
+        <br/> 
+
+        <!-- Acordeón para los modulos -->
+        <div class="accordion" id="accordionExample">
+            
+            <!-- OPCIÓN LIBRARY  -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  LIBRARY
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!-- Modulo Library  -->
+                        <div class="container-fluid" id="library">
+                            <div class="row">
+                                <div class="col-2">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#capturaModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                                        <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                                      </svg>
+                                            Nueva Sala
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- LISTADO GET  -->
+                            <h4 class="titulo"><center>Listado de reservación de salas</center></h4>
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Target</th>
+                                        <th>Capacity</th>
+                                        <th>Category_Id</th>
+                                        <th>Name</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="cuerpoTablaLibrary">
+                                </tbody>      
+                            </table>
+
+                            <!-- Modal captura y edición del formulario -->
+                            <div class="modal fade" id="capturaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ingreso de información</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="mb-12">
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Id</label>
+                                                        <input type="text" class="form-control" id="id">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Target </label>        
+                                                        <input type="text" class="form-control" id="target"> 
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Capacity</label>
+                                                        <input type="text" class="form-control" id="capacity"> 
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Category</label>
+                                                        <input type="text" class="form-control" id="category"> 
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="exampleFormControlInput1" class="form-label">Name</label>    
+                                                        <input type="text" class="form-control" id="name"> 
+                                                    </div>
+                                                </div>        
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="button" onclick="crear()" class="btn btn-primary" id="guardar">Guardar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN CATEGORY  -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  CATEGORY
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <!-- Modulo Category  -->
+                    <div class="container-fluid" id="category">
+                    
+                        <div class="row">
+                            <div class="col-3">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalCategory"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                                </svg>
+                                        CREAR CATEGORÍA
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- LISTADO GET  -->
+                        <h4 class="titulo"><center>Listado de Categorías</center></h4>
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody class="cuerpoTablaCategory">
+                            </tbody>      
+                        </table>
+
+                        <!-- Modal captura y edición del formulario -->
+                        <div class="modal fade" id="modalCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Ingreso de información</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="mb-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Id</label>
+                                                    <input type="text" class="form-control" id="idCategory">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Name</label>    
+                                                    <input type="text" class="form-control" id="nameCategory"> 
+                                                </div>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" onclick="crearCategory()" class="btn btn-primary" id="guardarCategory">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN CLIENT  -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  CLIENT
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!-- Modulo Category  -->
+                    <div class="container-fluid" id="category">
+                        <div class="row">
+                            <div class="col-2">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalClient"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                  </svg>
+                                        Nuevo Cliente
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- LISTADO GET  -->
+                        <h4 class="titulo"><center>Listado de Clientes</center></h4>
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Age</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody class="cuerpoTablaClient">
+                            </tbody>      
+                        </table>
+
+                        <!-- Modal captura y edición del formulario -->
+                        <div class="modal fade" id="ModalClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Ingreso de información</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="mb-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Id</label>
+                                                    <input type="text" class="form-control" id="idCliente">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Name </label>        
+                                                    <input type="text" class="form-control" id="nameCliente"> 
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                                    <input type="text" class="form-control" id="email" value="email@example.com"> 
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">Age</label>
+                                                    <input type="text" class="form-control" id="age"> 
+                                                </div>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" onclick="crearClient()" class="btn btn-info" id="guardarCliente">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- OPCIÓN MESSAGE  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    MESSAGE
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <!-- Modulo Category  -->
+                  <div class="container-fluid" id="category">
+                    
+                    <div class="row">
+                        <div class="col-3">
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalMessage"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                              </svg>
+                                    Nuevo Mensaje
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- LISTADO GET  -->
+                    <h4 class="titulo"><center>Listado de Mensajes</center></h4>
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Mensaje</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cuerpoTablaMessage">
+                        </tbody>      
+                    </table>
+
+                    <!-- Modal captura y edición del formulario -->
+                    <div class="modal fade" id="modalMessage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ingreso de información</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="mb-12">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Id</label>
+                                                <input type="text" class="form-control" id="idMensaje">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Mensaje </label>        
+                                                <input type="text" class="form-control" id="Mensaje"> 
+                                            </div>
+                                        </div>        
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" onclick="crearMensaje()" class="btn btn-dark" id="guardarMensaje">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    
+    //CARGAR TABLAS
+    $(document).ready(function(){
+        cargarTablaLibrary();
+        cargarTablaCategory();
+        cargarTablaClient();
+        cargarTablaMessage();
+    });
+    
+    /******************** FUNCIONES PARA LIMPIAR CAMPOS ******************************/
+
+    //LIBRARY
+    function limpiarCampos(){   
+        $('#id').val('');
+        $('#target').val('');
+        $('#capacity').val('');
+        $('#category').val('');
+        $('#name').val('');
+    }
+    
+    //CATEGORY
+    function limpiarCamposCategory(){  
+        $('#idCategory').val('');
+        $('#nameCategory').val('');
+    }
+
+     //CLIENT
+     function limpiarCamposClient(){  
+        $('#idCliente').val('');
+        $('#nameCliente').val('');
+        $('#email').val('');
+        $('#age').val('');
+    }
+
+     //MESSAGE
+     function limpiarCamposMessage(){  
+        $('#idMensaje').val('');
+        $('#Mensaje').val('');
+    }
+
+    /******************** CERRAR MODALES AL GUARDAR ******************************/
+    
+    //LIBRARY
+    $('#guardar').click(function() {    
+    $('#capturaModal').modal('hide');
+    alert("La información fue guardada con exito!.");            
+    limpiarCampos();
+    cargarTablaLibrary();
+    });
+
+    //CATEGORY
+    $('#guardarCategory').click(function() {         
+    $('#modalCategory').modal('hide');
+    alert("La información fue guardada con exito!.");            
+    limpiarCamposCategory();
+    cargarTablaCategory();
+    });
+
+     //CLIENT
+     $('#guardarCliente').click(function() {         
+    $('#ModalClient').modal('hide');
+    alert("La información fue guardada con exito!.");            
+    limpiarCamposClient();
+    cargarTablaClient();
+    });
+
+    //MESSAGE
+    $('#guardarMensaje').click(function() {         
+    $('#modalMessage').modal('hide');
+    alert("La información fue guardada con exito!.");            
+    limpiarCamposMessage();
+    cargarTablaMessage();
+    });
+
+
+
+    /************************************************   CRUD DE LAS TABLAS   ********************************************************************/
+    // LIBRARY
+    
+    // GET
+    function cargarTablaLibrary(){
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/library/library',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response){
+                var resultado = "";             
+                response.items.forEach(function(item){
+                    resultado+="<tr><td>"+item.id+"</td><td>";
+                    resultado+=item.target+"</td><td>";
+                    resultado+=item.capacity+"</td><td>";
+                    resultado+=item.category_id+"</td><td>";
+                    resultado+=item.name+"</td>";
+                    resultado+="<td><button onclick='actualizar()' class='btn btn-warning' id='editar' data-bs-toggle='modal' data-bs-target='#capturaModal'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg></td>";
+                    resultado+="<td><button onclick='borrar()' class='btn btn-danger' id='eliminar'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg></td><tr>";
+                });
+                $(".cuerpoTablaLibrary").html(resultado);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // POST
+    function crear(){
+        var id = $("#id").val();
+        var target = $("#target").val();
+        var capacity = $("#capacity").val();
+        var category = $("#category").val();
+        var name = $("#name").val();
+
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/library/library',
+            type: 'POST',
+            dataType: 'json',
+            data:{
+                id:id,
+                target:target,
+                capacity:capacity,
+                category_id:category,
+                name:name
+            },
+            success: function(response){
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+
+    // PUT
+    function actualizar(){
+        /*
+        var id = $("#id").val();
+        var target = $("#target").val();
+        var capacity = $("#capacity").val();
+        var category = $("#category").val();
+        var name = $("#name").val();
+        */
+       let myData={
+            id:$("#id").val(),
+            target:$("#target").val(),
+            capacity:$("#capacity").val(),
+            category_id:$("#category").val(),
+            name:$("#name").val()
+       };
+       let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/library/library',
+            type: 'PUT',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $('#cuerpoTablaLibrary').empty();
+                $('#id').val('');
+                $('#target').val('');
+                $('#capacity').val('');
+                $('#category').val('');
+                $('#name').val('');
+                cargarTabla();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // DELETE
+    function borrar(idElemento){
+        let myData={
+            id:idElemento
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/library/library',
+            type: 'DELETE',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $("#cuerpoTablaLibrary").empty();
+                alert("Registro Eliminado");
+                cargarTabla();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+    
+    /************************************************ CATEGORY ********************************************************/
+    // GET
+    function cargarTablaCategory(){
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/category/category',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response){
+                var resultado = "";             
+                response.items.forEach(function(item){
+                    resultado+="<tr><td>"+item.id+"</td><td>";
+                    resultado+=item.name+"</td>";
+                    resultado+="<td><button onclick='' class='btn btn-info' id='editar' data-bs-toggle='modal' data-bs-target='#modalCategory'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg></td>";
+                    resultado+="<td><button onclick='borrar()' class='btn btn-danger' id='eliminar'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg></td><tr>";
+                });
+                $(".cuerpoTablaCategory").html(resultado);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // POST
+    function crearCategory(){
+        var id = $("#idCategory").val();
+        var name = $("#nameCategory").val();
+
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/category/category',
+            type: 'POST',
+            dataType: 'json',
+            data:{
+                id:id,
+                name:name
+            },
+            success: function(response){
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+
+    // PUT
+    function actualizarCategory(){
+        /*
+        var id = $("#id").val();
+        var target = $("#target").val();
+        var capacity = $("#capacity").val();
+        var category = $("#category").val();
+        var name = $("#name").val();
+        */
+       let myData={
+            id:$("#id").val(),
+            target:$("#target").val(),
+            capacity:$("#capacity").val(),
+            category_id:$("#category").val(),
+            name:$("#name").val()
+       };
+       let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/category/category',
+            type: 'PUT',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $('#cuerpoTablaCategory').empty();
+                $('#id').val('');
+                $('#target').val('');
+                $('#capacity').val('');
+                $('#category').val('');
+                $('#name').val('');
+                cargarTabla();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // DELETE
+    function borrarCategory(idElemento){
+        let myData={
+            id:idElemento
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/category/category',
+            type: 'DELETE',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $("#cuerpoTablaCategory").empty();
+                alert("Registro Eliminado");
+                cargarTablaCategory();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    /************************************************ CLIENT ********************************************************/
+    // GET
+    function cargarTablaClient(){
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response){
+                var resultado = "";             
+                response.items.forEach(function(item){
+                    resultado+="<tr><td>"+item.id+"</td><td>";
+                    resultado+=item.name+"</td><td>"
+                    resultado+=item.email+"</td><td>";
+                    resultado+=item.age+"</td>";
+                    resultado+="<td><button onclick='' class='btn btn-success' id='editar' data-bs-toggle='modal' data-bs-target='#ModalClient'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg></td>";
+                    resultado+="<td><button onclick='borrar()' class='btn btn-danger' id='eliminar'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg></td><tr>";
+                });
+                $(".cuerpoTablaClient").html(resultado);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // POST
+    function crearClient(){
+        var id = $("#idCliente").val();
+        var name = $("#nameCliente").val();
+        var email = $("#email").val();
+        var age = $("#age").val();
+
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+            type: 'POST',
+            dataType: 'json',
+            data:{
+                id:id,
+                name:name,
+                email:email,
+                age:age
+            },
+            success: function(response){
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+
+    // PUT
+    function actualizarCliente(){
+        /*
+        var id = $("#id").val();
+        var target = $("#target").val();
+        var capacity = $("#capacity").val();
+        var category = $("#category").val();
+        var name = $("#name").val();
+        */
+       let myData={
+            id:$("#id").val(),
+            target:$("#target").val(),
+            capacity:$("#capacity").val(),
+            category_id:$("#category").val(),
+            name:$("#name").val()
+       };
+       let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+            type: 'PUT',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $('#cuerpoTablaCategory').empty();
+                $('#id').val('');
+                $('#target').val('');
+                $('#capacity').val('');
+                $('#category').val('');
+                $('#name').val('');
+                cargarTabla();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // DELETE
+    function borrarClient(idElemento){
+        let myData={
+            id:idElemento
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+            type: 'DELETE',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $("#cuerpoTablaCategory").empty();
+                alert("Registro Eliminado");
+                cargarTablaCategory();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    /************************************************ MESSAGE ********************************************************/
+    // GET
+    function cargarTablaMessage(){
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response){
+                var resultado = "";             
+                response.items.forEach(function(item){
+                    resultado+="<tr><td>"+item.id+"</td><td>";
+                    resultado+=item.messagetext+"</td>";
+                    resultado+="<td><button onclick='' class='btn btn-info' id='editar' data-bs-toggle='modal' data-bs-target='#modalMessage'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'><path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/><path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg></td>";
+                    resultado+="<td><button onclick='borrar()' class='btn btn-danger' id='eliminar'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg></td><tr>";
+                });
+                $(".cuerpoTablaMessage").html(resultado);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // POST
+    function crearMensaje(){
+        var id = $("#idMensaje").val();
+        var mensaje = $("#Mensaje").val();
+
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+            type: 'POST',
+            dataType: 'json',
+            data:{
+                id:id,
+                messagetext:mensaje
+            },
+            success: function(response){
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+
+    // PUT
+    function actualizarMensaje(){
+        /*
+        var id = $("#id").val();
+        var target = $("#target").val();
+        var capacity = $("#capacity").val();
+        var category = $("#category").val();
+        var name = $("#name").val();
+        */
+       let myData={
+            id:$("#id").val(),
+            target:$("#target").val(),
+            capacity:$("#capacity").val(),
+            category_id:$("#category").val(),
+            name:$("#name").val()
+       };
+       let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+            type: 'PUT',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $('#cuerpoTablaCategory').empty();
+                $('#id').val('');
+                $('#target').val('');
+                $('#capacity').val('');
+                $('#category').val('');
+                $('#name').val('');
+                cargarTabla();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+    // DELETE
+    function borrarMensaje(idElemento){
+        let myData={
+            id:idElemento
+        };
+        let dataToSend=JSON.stringify(myData);
+        $.ajax({
+            url: 'https://ge299c1312517f7-db202109292059.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+            type: 'DELETE',
+            data:dataToSend,
+            contentType:'application/JSON',
+            dataType: 'JSON',
+            success: function(response){
+                $("#cuerpoTablaCategory").empty();
+                alert("Registro Eliminado");
+                cargarTablaCategory();
+                console.log(xhr,responseText);
+            },
+            error: function(xhr,status){
+                console.log(xhr,responseText);
+            },
+            complete: function(xhr,status){
+                console.log(xhr,responseText);
+            }        
+        });
+    }
+
+
+    
+
+</script>
+</html>
