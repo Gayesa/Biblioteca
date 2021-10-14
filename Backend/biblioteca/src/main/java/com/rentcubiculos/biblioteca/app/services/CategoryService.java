@@ -34,7 +34,7 @@ public class CategoryService {
     
     //Actualizar
     public Category updateCategory(Category category){
-        Category exist = repository.findById(category.getIdCategory()).orElse(null);
+        Category exist = repository.findById(category.getId()).orElse(null);
         exist.setName(category.getName());
         exist.setDescription(category.getDescription());       
         return repository.save(exist);        

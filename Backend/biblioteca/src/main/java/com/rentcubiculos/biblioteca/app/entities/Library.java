@@ -33,7 +33,8 @@ import lombok.NoArgsConstructor;
 public class Library implements Serializable {
    @Id 
    @GeneratedValue( strategy = GenerationType.IDENTITY)
-   private int idLibrary;
+   @Column(name="idLibrary")
+   private int id;
    
    @Column(length = 45)
    private String name;
@@ -48,7 +49,7 @@ public class Library implements Serializable {
    
    //Relaciones
    @ManyToOne
-   @JoinColumn(name="idCategory")
+   @JoinColumn(name="id")
    @JsonIgnoreProperties("libs")
    private Category category;
    

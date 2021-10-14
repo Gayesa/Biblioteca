@@ -47,7 +47,7 @@ public class LibraryController {
     
     @DeleteMapping("/delete")
     public ResponseEntity deleteLibrary(@RequestBody Library library){
-        service.deleteLibrary(library.getIdLibrary());
+        service.deleteLibrary(library.getId());
         return ResponseEntity.status(204).build();
     } 
 }

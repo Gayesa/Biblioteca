@@ -39,7 +39,7 @@ public class Message implements Serializable{
    
    //Relaciones
    @ManyToOne
-   @JoinColumn(name="idLibrary")
+   @JoinColumn(name="id")
    @JsonIgnoreProperties({"messages","reservations"})
    private Library lib;
    

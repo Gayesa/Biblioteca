@@ -34,7 +34,7 @@ public class LibraryService {
     
     //Actualizar
     public Library updateLibrary(Library library){
-        Library exist = repository.findById(library.getIdLibrary()).orElse(null);
+        Library exist = repository.findById(library.getId()).orElse(null);
         exist.setName(library.getName());
         exist.setTarget(library.getTarget());
         exist.setCapacity(library.getCapacity());
